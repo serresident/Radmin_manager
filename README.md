@@ -1,49 +1,59 @@
-
-
-## 🛠 Radmin Book Manager (Ultimate Editor & Launcher)
-
-**Radmin Book Manager** — это специализированное приложение на Python (PyQt6), предназначенное для расширенного управления адресными книгами Radmin Viewer (файлы `.rpb`). Инструмент сочетает в себе возможности низкоуровневого редактирования бинарных данных и удобный графический интерфейс для повседневной работы системного администратора.
-
-### 🌟 Основное назначение
-Приложение решает проблему закрытости формата `.rpb`, позволяя редактировать, импортировать и автоматизировать подключения, которые в стандартном Radmin Viewer приходится настраивать только вручную.
+Вот качественный перевод описания твоего приложения на английский язык. Я сохранил техническую терминологию и акценты на ключевых преимуществах, чтобы оно солидно смотрелось на GitHub или в документации.
 
 ---
 
-### 🚀 Ключевой функционал
+# 🛠 Radmin Book Manager (Ultimate Editor & Launcher)
 
-#### 1. Управление бинарными файлами (.rpb)
-* **Чтение и парсинг:** Глубокий разбор структуры сегментов RPB (по 6138 байт) с извлечением имен, IP-адресов, портов, логинов и доменных имен.
-* **Сохранение базы:** Рекурсивная сборка дерева папок и хостов обратно в бинарный формат с автоматическим пересчетом внутренних идентификаторов (`ИДЗаписи`, `ИДРодителя`), что гарантирует корректное открытие файла в стандартном Radmin Viewer.
+**Radmin Book Manager** is a specialized Python-based application (PyQt6) designed for advanced management of Radmin Viewer address books (`.rpb` files). The tool combines low-level binary data editing capabilities with a user-friendly graphical interface tailored for the daily workflows of system administrators.
 
-#### 2. Интеллектуальное управление паролями
-* **Локальное хранилище (JSON):** Поскольку Radmin шифрует пароли внутри `.rpb`, приложение использует параллельную базу `radmin_credentials.json`. Это позволяет "подтягивать" пароли к записям даже после их перемещения или пересоздания.
-* **Бесшовная интеграция:** Пароли автоматически сохраняются при редактировании в таблице.
-
-#### 3. Автоматизация подключений (AutoFill)
-* **One-Click Launch:** Запуск Radmin Viewer напрямую из интерфейса в разных режимах (Управление, Просмотр, Telnet, Передача файлов).
-* **Автозаполнение форм:** Уникальная функция, которая использует WinAPI для обнаружения окна авторизации Radmin или Windows. Приложение автоматически вводит логин и пароль, имитируя нажатие Enter, что избавляет от ручного ввода данных при каждом подключении.
-
-#### 4. Гибкость и миграция данных
-* **Импорт/Экспорт CSV:** Возможность массово загружать списки хостов из Excel/CSV или выгружать текущую книгу для отчетности.
-* **Drag-and-Drop интерфейс:** Свободное перемещение хостов между папками внутри дерева для быстрой реорганизации структуры сети.
-
-#### 5. Технический мониторинг
-* **Встроенный Логгер:** Окно консоли внутри приложения выводит все действия в реальном времени: от статуса парсинга файлов до результатов поиска окон для автозаполнения.
+### 🌟 Purpose
+The application addresses the limitations of the proprietary `.rpb` format, enabling users to edit, import, and automate connections that typically require manual configuration in the standard Radmin Viewer.
 
 ---
 
-### 💻 Технологический стек
-* **Язык:** Python 3.
-* **GUI:** PyQt6 (обеспечивает высокую скорость работы и современный вид).
-* **Системное взаимодействие:** `ctypes` (WinAPI) для поиска хендлов окон и управления процессом авторизации.
-* **Бинарная обработка:** Модуль `struct` для работы с C-подобными структурами данных.
+### 🚀 Key Features
+
+#### 1. Binary File Management (.rpb)
+* **Deep Parsing:** Comprehensive analysis of RPB segments (6138 bytes each) to extract record names, IP addresses, ports, logins, and domain names.
+* **Database Reconstruction:** Recursive assembly of folder structures and hosts back into binary format. It includes automatic recalculation of internal IDs (`RecordID`, `ParentID`), ensuring full compatibility with the official Radmin Viewer.
+
+#### 2. Intelligent Password Management
+* **Local JSON Storage:** Since Radmin encrypts passwords within the `.rpb` file, this app utilizes a parallel `radmin_credentials.json` database. This allows passwords to be "re-linked" to records even after they are moved, renamed, or recreated.
+* **Seamless Integration:** Passwords are automatically saved and updated during table editing.
+
+#### 3. Connection Automation (AutoFill)
+* **One-Click Launch:** Launch Radmin Viewer directly from the interface in various modes: Full Control, View Only, Telnet, or File Transfer.
+* **Form Auto-Completion:** A unique feature utilizing WinAPI to detect Radmin or Windows authentication windows. The app automatically injects the login and password, simulating an "Enter" keypress, eliminating manual credential entry.
+
+#### 4. Data Flexibility & Migration
+* **CSV Import/Export:** Mass-load host lists from Excel/CSV or export the current address book for reporting and auditing.
+* **Drag-and-Drop Interface:** Easily reorganize your network structure by moving hosts between folders within the tree view.
+
+#### 5. Technical Monitoring
+* **Built-in Logger:** An integrated console window provides real-time feedback on file parsing status, window handle searches, and automation results.
 
 ---
 
-### 💡 Почему это удобнее стандартного Viewer?
-1.  **Массовое редактирование:** В обычном Viewer нельзя быстро поменять порт или домен у 50 серверов сразу — здесь это делается через CSV.
-2.  **Прозрачность:** Вы видите скрытые технические поля и можете отлаживать структуру дерева.
-3.  **Скорость:** Автозаполнение паролей экономит часы рабочего времени при администрировании больших парков машин.
+### 💻 Technology Stack
+* **Language:** Python 3.
+* **GUI:** PyQt6 (providing a modern look and high performance).
+* **System Interaction:** `ctypes` (WinAPI) for window handle detection and authentication process management.
+* **Binary Processing:** `struct` module for handling C-style data structures.
 
+---
 
-   использованы наработки из проекта https://github.com/xjj0906/RadminSavePassword  и https://github.com/kuzyara/Import-export-radmin-book-1C 
+### 💡 Why use this over the standard Viewer?
+1.  **Bulk Editing:** Unlike the standard Viewer, you can change ports or domains for 50+ servers at once via CSV.
+2.  **Transparency:** Access hidden technical fields and debug your address book's internal tree structure.
+3.  **Efficiency:** The AutoFill feature saves hours of manual labor when managing large-scale server environments.
+
+---
+
+### 📚 Credits & Acknowledgments
+This project utilizes logic and research from the following repositories:
+* [xjj0906/RadminSavePassword](https://github.com/xjj0906/RadminSavePassword)
+* [kuzyara/Import-export-radmin-book-1C](https://github.com/kuzyara/Import-export-radmin-book-1C)
+
+---
+
+**Does this version work for you? If you're planning to post this on GitHub, I could also help you write a "Getting Started" section with installation steps.** 😊
