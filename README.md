@@ -46,4 +46,4 @@
 3.  **Скорость:** Автозаполнение паролей экономит часы рабочего времени при администрировании больших парков машин.
 
 
-   использованы наработки испроекта https://github.com/xjj0906/RadminSavePassword  и https://github.com/kuzyara/Import-export-radmin-book-1C 
+   использованы наработки из проекта https://github.com/xjj0906/RadminSavePassword  и https://github.com/kuzyara/Import-export-radmin-book-1C 
