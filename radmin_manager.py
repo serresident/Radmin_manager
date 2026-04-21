@@ -530,7 +530,7 @@ class RadminUltimateEditor(QMainWindow):
                             "Адрес": self.read_utf16(seg, 4904, 200),
                             "Логин": self.read_utf16(seg, 5308, 200) or self.read_utf16_any(seg, [5320, 5340, 5360, 5380, 5400], 200),
                             "Домен": self.read_utf16(seg, 5508, 200),
-                            "ТипАвторизации": "Radmin" if struct.unpack_from("<I", seg, 6108)[0] == 1 else "Windows",
+                            "ТипАвторизации": "Radmin" if struct.unpack_from("<I", seg, 6108)[0] == 0 else "Windows",
                             "Порт": struct.unpack_from("<I", seg, 5304)[0]
                         })
             self.build_tree_from_list(hosts)
